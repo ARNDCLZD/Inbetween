@@ -6,59 +6,48 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator anim;
+    public BoxCollider2D box;
+    public LayerMask platformLayerMask;
     public bool isSpirit = false;
-
-    private bool playerOnGround;
     private void Update()
     {
         if (!isSpirit)
         {
-            if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Z))
+            if (Input.GetKey(KeyCode.Q))
             {
-                if (Input.GetKey(KeyCode.Q))
-                {
-                    gameObject.GetComponent<SpriteRenderer>().flipX = true;
-                    anim.SetBool("running", true);
-                    rb.velocity = new Vector2(-10, rb.velocity.y);
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    gameObject.GetComponent<SpriteRenderer>().flipX = false;
-                    anim.SetBool("running", true);
-                    rb.velocity = new Vector2(10, rb.velocity.y);
-                }
-                if (Input.GetKey(KeyCode.Z) && playerOnGround)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, 7f);
-                    anim.SetBool("jumping", true);
-                    playerOnGround = false;
-                }
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                anim.SetBool("running", true);
+                rb.velocity = new Vector2(-10, rb.velocity.y);
             }
-            else
+            if (Input.GetKey(KeyCode.D))
             {
-                anim.SetBool("jumping", false);
-                anim.SetBool("running", false);
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                anim.SetBool("running", true);
+                rb.velocity = new Vector2(10, rb.velocity.y);
             }
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Z) && IsGrounded())
             {
-                isSpirit = true;
+                rb.velocity = new Vector2(rb.velocity.x, 7f);
+                anim.SetBool("jumping", true);
             }
-            /*if (Input.GetKey(KeyCode.S))
-            {
-                rb.velocity = new Vector2(rb.velocity.x, -2);
-            }*/
+            Debug.Log("Grounded : " + IsGrounded());
+            if (IsGrounded()) anim.SetBool("jumping", false);
+            if (rb.velocity.x == 0) anim.SetBool("running", false);
+            if (Input.GetKey(KeyCode.Space)) isSpirit = true;   
         } else
         {
             anim.SetBool("jumping", false);
             anim.SetBool("running", false);
         }     
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool IsGrounded()
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            playerOnGround = true;
-        }
+        float extraHeightText = .1f;
+        RaycastHit2D raycastHit = Physics2D.BoxCast(box.bounds.center,box.bounds.size,0f,Vector2.down, extraHeightText, platformLayerMask);
+        Color rayColor;
+        if (raycastHit.collider != null) rayColor = Color.green;
+        else rayColor = Color.red;
+        Debug.DrawRay(box.bounds.center, Vector2.down * (box.bounds.extents.y + extraHeightText), rayColor);
+        return raycastHit.collider != null;
     }
-
 }

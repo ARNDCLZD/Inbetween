@@ -16,7 +16,6 @@ public class PlayerSoulController : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(0, 0);
-        Debug.Log("Mort : " + this.GetComponentInParent<PlayerController>().isSpirit);
         if (this.GetComponentInParent<PlayerController>().isSpirit)
         {
             GetComponent<SpriteRenderer>().enabled = true;
