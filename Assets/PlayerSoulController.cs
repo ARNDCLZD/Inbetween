@@ -23,25 +23,23 @@ public class PlayerSoulController : MonoBehaviour
             {
                 this.GetComponentInParent<PlayerController>().isSpirit = false;
             }
-            if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.S))
+
+            if (Input.GetKey(KeyCode.Q))
             {
-                if (Input.GetKey(KeyCode.Q))
-                {
-                    rb.velocity = new Vector2(-10, rb.velocity.y);
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    rb.velocity = new Vector2(10, rb.velocity.y);
-                }
-                if (Input.GetKey(KeyCode.Z))
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, 7f);
-                }
-                if (Input.GetKey(KeyCode.S))
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, -7f);
-                }
+                rb.velocity = new Vector2(-10, rb.velocity.y);
             }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.velocity = new Vector2(10, rb.velocity.y);
+            }
+            if (Input.GetKey(KeyCode.Z))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 7f);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -7f);
+            } 
         }
         else
         {
