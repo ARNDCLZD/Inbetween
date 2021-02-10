@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = Vector2.up * 10f;
             }
+
+            if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.D))
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
             // Accélération / Décélération lors d'un saut
             if (rb.velocity.y < 0)
             {
