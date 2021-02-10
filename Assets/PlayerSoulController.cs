@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSoulController : MonoBehaviour
 {
-    public  GameObject player;
+    public GameObject player;
     public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
