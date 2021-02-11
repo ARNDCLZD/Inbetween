@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         if(gameObj.tag == "deathBox")
         {
-            Debug.log("T mort");
+            Debug.Log("T mort");
         }
     }
 }
