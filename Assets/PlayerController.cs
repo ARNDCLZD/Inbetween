@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     public float fallMultiplier = 3.5f;
     public float lowJumpMultiplier = 3f;
 
+    private void Start()
+    {
+    }
     private void Update()
     {
         if (!isSpirit)
@@ -42,12 +45,18 @@ public class PlayerController : MonoBehaviour
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
             // Choix de l'animation de saut
-            if (IsGrounded()) anim.SetBool("jumping", false);
-            else anim.SetBool("jumping", true);
+            if (IsGrounded())
+            {
+                anim.SetBool("jumping", false);
+            }
+            else
+            {
+                anim.SetBool("jumping", true);
+            }
             // Reset de l'animation de course
             if (rb.velocity.x == 0) anim.SetBool("running", false);
             // Switch Normal/Spirit
-            if (Input.GetKey(KeyCode.Space)) isSpirit = true;   
+            if (Input.GetKey(KeyCode.Space)) isSpirit = true;
         } else
         {
             anim.SetBool("jumping", false);
