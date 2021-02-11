@@ -5,6 +5,8 @@ using UnityEngine;
 public class TriggerControler : MonoBehaviour
 {
     public bool nearObj = false;
+    public PorteController porte;
+    private bool pressed = false;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +17,9 @@ public class TriggerControler : MonoBehaviour
             // detecte la touche
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("OK");
+                pressed = !pressed;
+                if (!pressed) porte.Open();
+                else porte.Close();
             }
         }
     }
