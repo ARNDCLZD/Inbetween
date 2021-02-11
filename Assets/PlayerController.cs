@@ -91,4 +91,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Mort");
         }
     }
+
+    public void changeSpirit()
+    {
+        isSpirit = !isSpirit;
+    }
 }
