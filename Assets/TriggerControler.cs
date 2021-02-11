@@ -14,10 +14,11 @@ public class TriggerControler : MonoBehaviour
         // detecte la colision
         if (nearObj)
         {
-            //change color
+            //change color clickable
             // detecte la touche
             if (Input.GetKeyUp(KeyCode.E))
             {
+                //change color clicked
                 porte.Open();
             }
         }
