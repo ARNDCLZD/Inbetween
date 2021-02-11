@@ -8,14 +8,17 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public BoxCollider2D box;
     public LayerMask platformLayerMask;
-    public bool isSpirit = false;
+    public bool isSpirit;
 
     public float fallMultiplier = 3.5f;
     public float lowJumpMultiplier = 3f;
 
     private void Start()
     {
+        isSpirit = false;
     }
+
+
     private void Update()
     {
         if (!isSpirit)
@@ -35,6 +38,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z) && IsGrounded())
             {
                 rb.velocity = Vector2.up * 10f;
+            }
+
+            if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.D))
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
             // Accélération / Décélération lors d'un saut
             if (rb.velocity.y < 0)
@@ -56,7 +64,14 @@ public class PlayerController : MonoBehaviour
             // Reset de l'animation de course
             if (rb.velocity.x == 0) anim.SetBool("running", false);
             // Switch Normal/Spirit
+
             if (Input.GetKey(KeyCode.Space)) isSpirit = true;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isSpirit = true;
+            }  
+
         } else
         {
             anim.SetBool("jumping", false);

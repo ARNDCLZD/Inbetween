@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerSoulController : MonoBehaviour
 {
-    public  GameObject player;
+    public GameObject player;
     public Rigidbody2D rb;
+    public bool status;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +16,12 @@ public class PlayerSoulController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         rb.velocity = new Vector2(0, 0);
         if (this.GetComponentInParent<PlayerController>().isSpirit)
         {
             GetComponent<SpriteRenderer>().enabled = true;
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 this.GetComponentInParent<PlayerController>().isSpirit = false;
             }
