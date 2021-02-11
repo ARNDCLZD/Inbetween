@@ -69,8 +69,9 @@ public class PlayerController : MonoBehaviour
             // Switch Normal/Spirit
         } else
         {
-            anim.SetBool("jumping", false);
-            anim.SetBool("running", false);
+            if(IsGrounded())rb.velocity = new Vector2(0, rb.velocity.y);
+            if (rb.velocity.y == 0) anim.SetBool("jumping", false);
+            if (rb.velocity.x == 0) anim.SetBool("running", false);
         }     
     }
     private bool IsGrounded()
