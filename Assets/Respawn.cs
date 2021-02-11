@@ -10,6 +10,7 @@ public class Respawn : MonoBehaviour
     {
         if (col.transform.tag == "deathBox")
         {
+            GetComponent<PlayerController>().isSpirit = false;
             this.transform.position = spawnPoint.transform.position;
         }
     }

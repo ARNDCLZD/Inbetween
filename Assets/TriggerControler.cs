@@ -6,20 +6,19 @@ public class TriggerControler : MonoBehaviour
 {
     public bool nearObj = false;
     public PorteController porte;
-    private bool pressed = false;
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(nearObj);
         // detecte la colision
         if (nearObj)
         {
+            //change color
             // detecte la touche
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyUp(KeyCode.E))
             {
-                pressed = !pressed;
-                if (!pressed) porte.Open();
-                else porte.Close();
+                porte.Open();
             }
         }
     }
