@@ -10,6 +10,7 @@ TagManager:
   - deathBoxSpirit
   - gazoual
   - playerSoul
+  - plaquePression
   layers:
   - Default
   - TransparentFX
