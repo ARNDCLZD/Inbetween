@@ -21,10 +21,10 @@ public class PlayerSoulController : MonoBehaviour
         if (this.GetComponentInParent<PlayerController>().isSpirit)
         {
             GetComponent<SpriteRenderer>().enabled = true;
-            if (Input.GetKeyDown(KeyCode.Space))
+            /*if (Input.GetKeyDown(KeyCode.Space))
             {
                 this.GetComponentInParent<PlayerController>().isSpirit = false;
-            }
+            }*/
 
             if (Input.GetKey(KeyCode.Q))
             {

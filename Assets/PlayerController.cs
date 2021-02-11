@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D box;
     public LayerMask platformLayerMask;
     public bool isSpirit;
-
     public float fallMultiplier = 3.5f;
     public float lowJumpMultiplier = 3f;
 
@@ -21,6 +20,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isSpirit = !isSpirit;
+        }
         if (!isSpirit)
         {
             if (Input.GetKey(KeyCode.Q))
@@ -64,14 +67,6 @@ public class PlayerController : MonoBehaviour
             // Reset de l'animation de course
             if (rb.velocity.x == 0) anim.SetBool("running", false);
             // Switch Normal/Spirit
-
-            if (Input.GetKey(KeyCode.Space)) isSpirit = true;
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                isSpirit = true;
-            }  
-
         } else
         {
             anim.SetBool("jumping", false);
@@ -87,5 +82,13 @@ public class PlayerController : MonoBehaviour
         else rayColor = Color.red;
         Debug.DrawRay(box.bounds.center, Vector2.down * (box.bounds.extents.y + extraHeightText), rayColor);
         return raycastHit.collider != null;
+    }
+
+    void OnTriggerEnter2D(Collider2D gameObj)
+    {
+        if(gameObj.tag == "deathBox")
+        {
+            Debug.log("T mort");
+        }
     }
 }
