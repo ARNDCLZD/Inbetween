@@ -8,10 +8,15 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public BoxCollider2D box;
     public LayerMask platformLayerMask;
-    public bool isSpirit = false;
+    public bool isSpirit;
 
     public float fallMultiplier = 3.5f;
     public float lowJumpMultiplier = 3f;
+
+    private void Start()
+    {
+        isSpirit = false;
+    }
 
     private void Update()
     {
@@ -52,7 +57,10 @@ public class PlayerController : MonoBehaviour
             // Reset de l'animation de course
             if (rb.velocity.x == 0) anim.SetBool("running", false);
             // Switch Normal/Spirit
-            if (Input.GetKey(KeyCode.Space)) isSpirit = true;   
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isSpirit = true;
+            }  
         } else
         {
             anim.SetBool("jumping", false);

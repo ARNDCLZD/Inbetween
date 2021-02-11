@@ -3231,7 +3231,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9ff4444d73440624db61261c8e61f265, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -5090,7 +5090,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 9b67acf45960c7243bcf9c34345811a1, type: 2}
+  m_Material: {fileID: 6200000, guid: 9ff4444d73440624db61261c8e61f265, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -5207,6 +5207,9 @@ MonoBehaviour:
   isSpirit: 0
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
+  start: 0
+  cooldown: 2
+  canSpirit: 1
 --- !u!95 &2115822011
 Animator:
   serializedVersion: 3
