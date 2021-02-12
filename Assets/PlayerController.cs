@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
     public void stabiliser()
     {
         vector.y = 0;
-
+    }
     private void PlayFootsteps()
     {
         if (IsGrounded() && (rb.velocity.x > 0.1f || rb.velocity.x < -0.1f))
