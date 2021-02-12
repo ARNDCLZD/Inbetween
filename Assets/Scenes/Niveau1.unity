@@ -8160,7 +8160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eeecccab89b9424abfad63a251a3ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 40
+  dashSpeed: 25
   startDashTime: 0.2
   cdi: {fileID: 0}
   dashEffect: {fileID: 4361957100176894063, guid: 05acf0c8a2f2bdc48b38660790a8d114,
