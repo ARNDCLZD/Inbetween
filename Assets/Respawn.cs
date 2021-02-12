@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class Respawn : MonoBehaviour
 {
     public GameObject spawnPoint;
+    public AudioSource audio;
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.transform.tag == "deathBox")
         {
+            audio.Play();
             GetComponent<PlayerController>().isSpirit = false;
-            SceneManager.LoadScene("Niveau1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
     public void respawn()
