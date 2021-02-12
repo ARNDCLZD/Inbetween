@@ -6,6 +6,7 @@ public class PlaquePressionControler : MonoBehaviour
 {
     public bool nearObj = false;
     public PorteController porte;
+    public AudioSource audioButton;
 
     // Update is called once per frame
     void Update()
@@ -28,6 +29,7 @@ public class PlaquePressionControler : MonoBehaviour
         {
             nearObj = true;
             porte.Interact();
+            audioButton.Play();
         }
         
     }
