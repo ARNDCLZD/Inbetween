@@ -54,10 +54,9 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Z) && IsGrounded())
             {
-                vector = Vector2.up * 14f;
+                vector = Vector2.up * 12f;
                 /*rb.velocity = Vector2.up * 10f;*/
                 audioJump.Play();
-                rb.velocity = Vector2.up * 10f;
             }
 
             if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.D))

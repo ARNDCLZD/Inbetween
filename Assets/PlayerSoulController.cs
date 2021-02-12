@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSoulController : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class PlayerSoulController : MonoBehaviour
             }
             else
             {
-                this.GetComponentInParent<PlayerController>().changeSpirit();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
         else
