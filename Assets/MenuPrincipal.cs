@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuPrincipal : MonoBehaviour
 {
+    public TimerBehaviour timer;
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        timer.startTimer();
     }
     public void QuitGame()
     {

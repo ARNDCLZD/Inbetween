@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool isSpirit;
     public float fallMultiplier = 3.5f;
     public float lowJumpMultiplier = 3f;
+    public Respawn mort;
 
     private void Start()
     {
@@ -23,10 +24,15 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             isSpirit = !isSpirit;
         }
         if (!isSpirit)
         {
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                mort.respawn();
+            }
             if (Input.GetKey(KeyCode.Q))
             {
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;

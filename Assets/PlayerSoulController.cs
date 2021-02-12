@@ -8,21 +8,27 @@ public class PlayerSoulController : MonoBehaviour
     public Rigidbody2D rb;
     public bool status;
     public int essence;
+    private int maxEssence = 1000;
+    public MentalBarController mentalbar;
     // Start is called before the first frame update
     void Start()
     {
-        this.essence = 1000;
+        this.essence = maxEssence;
         this.status = false;
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), this.GetComponent<Collider2D>()); 
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
+        mentalbar.SetMental(essence, maxEssence);
     }
 
     // Update is called once per frame
     void Update()
     {
+        mentalbar.SetMental(essence, maxEssence);
+        mentalbar.gameObject.SetActive(false);
         rb.velocity = new Vector2(0, 0);
         if (this.GetComponentInParent<PlayerController>().isSpirit)
         {
-            if(this.status != this.GetComponentInParent<PlayerController>().isSpirit)
+            mentalbar.gameObject.SetActive(true);
+            if (this.status != this.GetComponentInParent<PlayerController>().isSpirit)
             {
                 this.status = !this.status;
             }

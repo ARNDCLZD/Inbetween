@@ -10,11 +10,12 @@ public class DashAbility : MonoBehaviour
     public float startDashTime;
     private int direction;
 
+    public CooldownIndicator cdi;
     public GameObject dashEffect;
 
     private float startCooldown = 0f;
-    private float cooldown = 3f;
-    private bool canDash;
+    public float cooldown = 3f;
+    public bool canDash;
 
     void Start()
     {

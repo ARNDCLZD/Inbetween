@@ -15,4 +15,8 @@ public class Respawn : MonoBehaviour
             SceneManager.LoadScene("Niveau1");
         }
     }
+    public void respawn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
