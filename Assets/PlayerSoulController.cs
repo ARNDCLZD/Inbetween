@@ -62,7 +62,6 @@ public class PlayerSoulController : MonoBehaviour
             {
                 this.GetComponentInParent<PlayerController>().changeSpirit();
             }
-            Debug.Log(this.essence);
         }
         else
         {
