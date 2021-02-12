@@ -85,6 +85,7 @@ public class DashAbility : MonoBehaviour
                 {
                     rb.velocity = Vector2.down * dashSpeed;
                 }
+                GetComponent<PlayerController>().stabiliser();
             }
         }
     }

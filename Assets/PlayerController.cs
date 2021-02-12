@@ -82,22 +82,23 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("jumping", false);
             anim.SetBool("running", false);
         }
-        if (rb.velocity.y <= 0)
+        Debug.Log(IsGrounded());
+        if (rb.velocity.y < 0 && !IsGrounded())
         {
             vector.y += 1 * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             /*rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;*/
         }
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Z))
         {
-            Debug.Log(Physics2D.gravity.y);
-            Debug.Log(lowJumpMultiplier);
-            Debug.Log(Time.deltaTime);
             vector.y += 2 * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
             /*rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;*/
         }
         else
         {
-            vector.y += 1 * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+            if (!IsGrounded())
+            {
+                vector.y += 1 * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+            }
         }
         
         rb.velocity = vector;
@@ -132,5 +133,10 @@ public class PlayerController : MonoBehaviour
     public void changeSpirit()
     {
         isSpirit = !isSpirit;
+    }
+
+    public void stabiliser()
+    {
+        vector.y = 0;
     }
 }
