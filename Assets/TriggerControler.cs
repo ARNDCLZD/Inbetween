@@ -14,7 +14,7 @@ public class TriggerControler : MonoBehaviour
         // detecte la colision
         if (nearObj)
         {
-            //change color clickable
+            GetComponent<SpriteRenderer>().color = Color.red;
             // detecte la touche
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -25,6 +25,10 @@ public class TriggerControler : MonoBehaviour
                 }
                 
             }
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 

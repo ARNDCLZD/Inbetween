@@ -12,6 +12,7 @@ public class DashAbility : MonoBehaviour
 
     public GameObject dashEffect;
 
+    public AudioSource audioDash;
     private float startCooldown = 0f;
     private float cooldown = 3f;
     private bool canDash;
@@ -67,7 +68,7 @@ public class DashAbility : MonoBehaviour
             else
             {
                 dashTime -= Time.deltaTime;
-
+                audioDash.Play();
                 if (direction == 1)
                 {
                     rb.velocity = Vector2.left * dashSpeed;
