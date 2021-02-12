@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 vector = new Vector2(0, 0);
 
 
+    public AudioSource audioFoot;
+    public AudioSource audioJump;
+    public AudioSource audioSwap;
+
     private void Start()
     {
         isSpirit = false;
@@ -25,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            audioSwap.Play();
 
             isSpirit = !isSpirit;
         }
@@ -51,6 +56,8 @@ public class PlayerController : MonoBehaviour
             {
                 vector = Vector2.up * 14f;
                 /*rb.velocity = Vector2.up * 10f;*/
+                audioJump.Play();
+                rb.velocity = Vector2.up * 10f;
             }
 
             if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.D))
@@ -111,6 +118,12 @@ public class PlayerController : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }*/
     }
+
+    private void FixedUpdate()
+    {
+        PlayFootsteps();
+    }
+
     private bool IsGrounded()
     {
         float extraHeightText = .1f;
@@ -135,8 +148,30 @@ public class PlayerController : MonoBehaviour
         isSpirit = !isSpirit;
     }
 
+
     public void stabiliser()
     {
         vector.y = 0;
+
+    private void PlayFootsteps()
+    {
+        if (IsGrounded() && (rb.velocity.x > 0.1f || rb.velocity.x < -0.1f))
+        {
+            audioFoot.enabled = true;
+            audioFoot.loop = true;
+        }else
+        {
+            audioFoot.enabled = false;
+            audioFoot.loop = false;
+        }
+    }
+
+    private void PlayJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Z) && IsGrounded())
+        {
+            audioJump.Play();
+        }
+
     }
 }

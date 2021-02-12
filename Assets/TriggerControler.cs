@@ -7,6 +7,7 @@ public class TriggerControler : MonoBehaviour
     public bool nearObj = false;
     public PorteController porte;
     public bool cartouche = true;
+    public AudioSource audioButton;
 
     // Update is called once per frame
     void Update()
@@ -14,10 +15,11 @@ public class TriggerControler : MonoBehaviour
         // detecte la colision
         if (nearObj)
         {
-            //change color clickable
+            GetComponent<SpriteRenderer>().color = Color.red;
             // detecte la touche
             if (Input.GetKeyDown(KeyCode.E))
             {
+                audioButton.Play();
                 if (cartouche)
                 {
                     porte.Interact();
@@ -25,6 +27,10 @@ public class TriggerControler : MonoBehaviour
                 }
                 
             }
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 
