@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,10 +11,6 @@ public class PlayerController : MonoBehaviour
     public bool isSpirit;
     public float fallMultiplier = 3.5f;
     public float lowJumpMultiplier = 3f;
-    private bool haut;
-    private bool bas;
-    private bool gauche;
-    private bool droite;
 
     private void Start()
     {
@@ -74,10 +69,9 @@ public class PlayerController : MonoBehaviour
             // Switch Normal/Spirit
         } else
         {
-            if(IsGrounded())rb.velocity = new Vector2(0, rb.velocity.y);
-            if (rb.velocity.y == 0) anim.SetBool("jumping", false);
-            if (rb.velocity.x == 0) anim.SetBool("running", false);
-        }
+            anim.SetBool("jumping", false);
+            anim.SetBool("running", false);
+        }     
     }
     private bool IsGrounded()
     {
@@ -88,6 +82,14 @@ public class PlayerController : MonoBehaviour
         else rayColor = Color.red;
         Debug.DrawRay(box.bounds.center, Vector2.down * (box.bounds.extents.y + extraHeightText), rayColor);
         return raycastHit.collider != null;
+    }
+
+    void OnTriggerEnter2D(Collider2D gameObj)
+    {
+        if(gameObj.tag == "deathBox")
+        {
+            Debug.Log("Mort");
+        }
     }
 
     public void changeSpirit()
