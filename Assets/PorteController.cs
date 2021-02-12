@@ -14,7 +14,6 @@ public class PorteController : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log(animator.GetBool("Ouvert"));
     }
 
     void Update()
