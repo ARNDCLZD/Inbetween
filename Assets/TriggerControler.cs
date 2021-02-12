@@ -10,7 +10,6 @@ public class TriggerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(nearObj);
         // detecte la colision
         if (nearObj)
         {

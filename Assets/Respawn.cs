@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Respawn : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Respawn : MonoBehaviour
         if (col.transform.tag == "deathBox")
         {
             GetComponent<PlayerController>().isSpirit = false;
-            this.transform.position = spawnPoint.transform.position;
+            SceneManager.LoadScene("Niveau1");
         }
     }
 }

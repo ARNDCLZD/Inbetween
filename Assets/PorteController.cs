@@ -12,7 +12,6 @@ public class PorteController : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log(animator.GetBool("Ouvert"));
     }
     // Start is called before the first frame update
     public void Open()
