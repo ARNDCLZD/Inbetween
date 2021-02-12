@@ -18,7 +18,6 @@ public class PorteController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(interact);
         if(this.interact >= seuil)
         {
             this.Open();

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool isSpirit;
     public float fallMultiplier = 3.5f;
     public float lowJumpMultiplier = 3f;
+    private Vector2 vector = new Vector2(0, 0);
 
     private void Start()
     {
@@ -30,31 +31,28 @@ public class PlayerController : MonoBehaviour
             {
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;
                 anim.SetBool("running", true);
-                rb.velocity = new Vector2(-10, rb.velocity.y);
+                vector.x = -10;
             }
             if (Input.GetKey(KeyCode.D))
             {
                 gameObject.GetComponent<SpriteRenderer>().flipX = false;
                 anim.SetBool("running", true);
-                rb.velocity = new Vector2(10, rb.velocity.y);
+                vector.x = 10;
+                /*rb.velocity = new Vector2(10, rb.velocity.y);*/
             }
             if (Input.GetKeyDown(KeyCode.Z) && IsGrounded())
             {
-                rb.velocity = Vector2.up * 10f;
+                vector = Vector2.up * 14f;
+                /*rb.velocity = Vector2.up * 10f;*/
             }
 
             if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.D))
             {
-                rb.velocity = new Vector2(0, rb.velocity.y);
+                vector.x = 0;
+                /*rb.velocity = new Vector2(0, rb.velocity.y);*/
             }
             // Accélération / Décélération lors d'un saut
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            } else if(rb.velocity.y > 0 && !Input.GetKey(KeyCode.Z))
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
+            
             // Choix de l'animation de saut
             if (IsGrounded())
             {
@@ -69,9 +67,41 @@ public class PlayerController : MonoBehaviour
             // Switch Normal/Spirit
         } else
         {
+            if (IsGrounded())
+            {
+                vector.x = 0;
+            }
+            /*rb.velocity = new Vector2(0, rb.velocity.y);*/
             anim.SetBool("jumping", false);
             anim.SetBool("running", false);
-        }     
+        }
+        if (rb.velocity.y <= 0)
+        {
+            vector.y += 1 * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            /*rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;*/
+        }
+        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Z))
+        {
+            Debug.Log(Physics2D.gravity.y);
+            Debug.Log(lowJumpMultiplier);
+            Debug.Log(Time.deltaTime);
+            vector.y += 2 * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+            /*rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;*/
+        }
+        else
+        {
+            vector.y += 1 * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+        }
+        
+        rb.velocity = vector;
+        /*if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Z))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }*/
     }
     private bool IsGrounded()
     {
