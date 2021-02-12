@@ -11,6 +11,7 @@ TagManager:
   - gazoual
   - playerSoul
   - plaquePression
+  - winBox
   layers:
   - Default
   - TransparentFX

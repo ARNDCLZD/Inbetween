@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     public bool isSpirit;
     public float fallMultiplier = 3.5f;
     public float lowJumpMultiplier = 3f;
+    private bool haut;
+    private bool bas;
+    private bool gauche;
+    private bool droite;
 
     private void Start()
     {
@@ -72,7 +76,7 @@ public class PlayerController : MonoBehaviour
             if(IsGrounded())rb.velocity = new Vector2(0, rb.velocity.y);
             if (rb.velocity.y == 0) anim.SetBool("jumping", false);
             if (rb.velocity.x == 0) anim.SetBool("running", false);
-        }     
+        }
     }
     private bool IsGrounded()
     {
