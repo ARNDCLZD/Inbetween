@@ -86,14 +86,6 @@ public class PlayerController : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    void OnTriggerEnter2D(Collider2D gameObj)
-    {
-        if(gameObj.tag == "deathBox")
-        {
-            Debug.Log("Mort");
-        }
-    }
-
     public void changeSpirit()
     {
         isSpirit = !isSpirit;
