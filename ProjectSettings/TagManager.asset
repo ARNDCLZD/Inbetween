@@ -55,6 +55,9 @@ TagManager:
   - name: Background2
     uniqueID: 2958702721
     locked: 0
+  - name: Background3
+    uniqueID: 1997487969
+    locked: 0
   - name: Entity
     uniqueID: 1251618669
     locked: 0
@@ -63,4 +66,7 @@ TagManager:
     locked: 0
   - name: Foreground2
     uniqueID: 3153268913
+    locked: 0
+  - name: Foreground3
+    uniqueID: 671576051
     locked: 0
