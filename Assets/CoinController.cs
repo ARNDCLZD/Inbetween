@@ -6,6 +6,7 @@ public class CoinController : MonoBehaviour
 {
     private bool nearObj = false;
     public GameObject coin;
+    public AudioSource audioCollect;
 
     // Update is called once per frame
     void Update()
@@ -13,6 +14,7 @@ public class CoinController : MonoBehaviour
         // detecte la colision
         if (nearObj)
         {
+            audioCollect.Play();
             coin.SetActive(false);
         }
     }
