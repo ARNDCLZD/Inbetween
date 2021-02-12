@@ -89,24 +89,24 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("jumping", false);
             anim.SetBool("running", false);
         }
-        if (rb.velocity.y <= 0)
+        if (rb.velocity.y < 0 && !IsGrounded())
         {
             vector.y += 1 * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             /*rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;*/
         }
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Z))
         {
-            Debug.Log(Physics2D.gravity.y);
-            Debug.Log(lowJumpMultiplier);
-            Debug.Log(Time.deltaTime);
             vector.y += 2 * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
             /*rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;*/
         }
         else
         {
-            vector.y += 1 * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+            if (!IsGrounded())
+            {
+                vector.y += 1 * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+            }
         }
-        
+
         rb.velocity = vector;
         /*if (rb.velocity.y < 0)
         {
@@ -166,5 +166,10 @@ public class PlayerController : MonoBehaviour
         {
             audioJump.Play();
         }
+    }
+
+    public void stabiliser()
+    {
+        vector.y = 0;
     }
 }

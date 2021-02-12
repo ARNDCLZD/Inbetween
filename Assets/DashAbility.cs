@@ -73,20 +73,25 @@ public class DashAbility : MonoBehaviour
                 if (direction == 1)
                 {
                     rb.velocity = Vector2.left * dashSpeed;
+                    GetComponent<PlayerController>().stabiliser();
                 }
                 else if (direction == 2)
                 {
                     rb.velocity = Vector2.right * dashSpeed;
+                    GetComponent<PlayerController>().stabiliser();
                 }
                 else if (direction == 3)
                 {
                     rb.velocity = Vector2.up * dashSpeed;
+                    GetComponent<PlayerController>().stabiliser();
                 }
                 else if (direction == 4)
                 {
                     rb.velocity = Vector2.down * dashSpeed;
+                    GetComponent<PlayerController>().stabiliser();
                 }
             }
+
         }
     }
 }

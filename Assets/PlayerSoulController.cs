@@ -85,4 +85,6 @@ public class PlayerSoulController : MonoBehaviour
             this.essence = 1000;
         }
     }
+
+    
 }
