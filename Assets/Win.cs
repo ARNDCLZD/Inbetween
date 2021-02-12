@@ -9,7 +9,7 @@ public class Win : MonoBehaviour
     {
         if (col.transform.tag == "winBox")
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
     }
 }
